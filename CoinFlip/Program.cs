@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-//Refactor to remove verbose conditional.
+//Removed first else statement and set the the coinDescription to initially be "Tails".
 namespace CoinFlip
 {
     class Program
@@ -14,7 +14,7 @@ namespace CoinFlip
         {
             int coin;
             string userGuess;
-            string coinDescription;
+            string coinDescription = "Tails";
             Random numberGenerator = new Random();
 
             //query user
@@ -27,11 +27,6 @@ namespace CoinFlip
             {
                 coinDescription = "Heads";
             }
-            else
-            {
-                coinDescription = "Tails";
-            }
-
             if (coin == 0 && userGuess == "T" || coin == 1 && userGuess == "H")
             {
                 Console.WriteLine("The flip was {0}, you win!!!", coinDescription);
