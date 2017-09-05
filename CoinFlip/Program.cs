@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//Refactor to remove verbose conditional.
 namespace CoinFlip
 {
     class Program
@@ -12,6 +14,7 @@ namespace CoinFlip
         {
             int coin;
             string userGuess;
+            string coinDescription;
             Random numberGenerator = new Random();
 
             //query user
@@ -20,21 +23,22 @@ namespace CoinFlip
 
             //get random number
             coin = numberGenerator.Next(0, 2);
-            if (coin == 0 && userGuess == "T")
+            if (coin == 1)
             {
-                Console.WriteLine("The flip was Tails, you win!!!");
-            }
-            else if (coin == 1 && userGuess == "H")
-            {
-                Console.WriteLine("The flip was Heads, you win!!!");
-            }
-            else if (coin == 0 && userGuess == "H")
-            {
-                Console.WriteLine("Sorry, the flip was Tails...you lose.");
+                coinDescription = "Heads";
             }
             else
             {
-                Console.WriteLine("Sorry, the flip was Heads...you lose.");
+                coinDescription = "Tails";
+            }
+
+            if (coin == 0 && userGuess == "T" || coin == 1 && userGuess == "H")
+            {
+                Console.WriteLine("The flip was {0}, you win!!!", coinDescription);
+            }
+            else
+            {
+                Console.WriteLine("Sorry, the flip was {0}...you lose.", coinDescription);
             }
         }
     }
